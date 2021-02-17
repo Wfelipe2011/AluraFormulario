@@ -9,7 +9,7 @@ function DadosEntrega({ aoEnviar }) {
   const [cidade, setCidade] = useState("");
 
   useEffect(() => {
-    if (cep.length == 8) {
+    if (cep.length === 8) {
       const url = `https://viacep.com.br/ws/${cep}/json/`;
       fetch(url)
         .then((response) => {
