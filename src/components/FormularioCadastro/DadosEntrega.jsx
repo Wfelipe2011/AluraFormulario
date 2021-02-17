@@ -21,6 +21,7 @@ function DadosEntrega({ aoEnviar }) {
           setCep(event.target.value);
         }}
         label="CEP"
+        required
         variant="outlined"
         margin="normal"
         id="cep"
