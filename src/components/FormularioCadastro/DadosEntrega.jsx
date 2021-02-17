@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TextField, Button } from "@material-ui/core";
 
 function DadosEntrega({ aoEnviar }) {
@@ -8,6 +8,25 @@ function DadosEntrega({ aoEnviar }) {
   const [estado, setEstado] = useState("");
   const [cidade, setCidade] = useState("");
 
+  useEffect(() => {
+    if (cep.length == 8) {
+      const url = `https://viacep.com.br/ws/${cep}/json/`;
+      fetch(url)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          atribuirCampos(data);
+        });
+    }
+  });
+
+  function atribuirCampos(data) {
+    setEndereco(data.logradouro);
+    setCidade(data.localidade);
+    setEstado(data.uf);
+  }
+
   return (
     <form
       onSubmit={(event) => {
@@ -16,6 +35,7 @@ function DadosEntrega({ aoEnviar }) {
       }}
     >
       <TextField
+       required
         value={cep}
         onChange={(event) => {
           setCep(event.target.value);
@@ -28,6 +48,7 @@ function DadosEntrega({ aoEnviar }) {
         type="number"
       />
       <TextField
+       required
         value={endereco}
         onChange={(event) => {
           setEndereco(event.target.value);
@@ -40,6 +61,7 @@ function DadosEntrega({ aoEnviar }) {
         type="text"
       />
       <TextField
+       required
         value={numero}
         onChange={(event) => {
           setNumero(event.target.value);
@@ -51,6 +73,7 @@ function DadosEntrega({ aoEnviar }) {
         type="number"
       />
       <TextField
+       required
         value={estado}
         onChange={(event) => {
           setEstado(event.target.value);
@@ -62,6 +85,7 @@ function DadosEntrega({ aoEnviar }) {
         type="text"
       />
       <TextField
+       required
         value={cidade}
         onChange={(event) => {
           setCidade(event.target.value);
