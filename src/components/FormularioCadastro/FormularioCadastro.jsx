@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DadosPessoais from "./DadosPessoais";
 import DadosUsuario from "./DadosUsuario";
 import DadosEntrega from "./DadosEntrega";
-import {StepLabel, Stepper, Typography, Step} from "@material-ui/core";
+import {StepLabel, Stepper, Typography, Step, Container} from "@material-ui/core";
 
 
 function FormularioCadastro({ aoEnviar, validarCPF }) {
@@ -21,7 +21,7 @@ function FormularioCadastro({ aoEnviar, validarCPF }) {
 <DadosUsuario aoEnviar={coletarDados}  />,
 <DadosPessoais aoEnviar={coletarDados} validarCPF={validarCPF} />,
 <DadosEntrega aoEnviar={coletarDados} />,
-<Typography variant="h5">Obrigado {dadosColetado.nome} pelos dados Cadastrados! </Typography>
+<Typography variant="h5" >Obrigado {dadosColetado.nome} pelos dados Cadastrados! </Typography>
   ];
 
   function coletarDados(dados){
@@ -33,7 +33,7 @@ function FormularioCadastro({ aoEnviar, validarCPF }) {
     setEtapaAtual(etapaAtual+1);
   }
   return (
-    <>
+    <Container maxWidth="sm" >
     <Stepper activeStep={etapaAtual}>
       <Step><StepLabel>Login</StepLabel></Step>
       <Step><StepLabel>Pessoal</StepLabel></Step>
@@ -42,7 +42,7 @@ function FormularioCadastro({ aoEnviar, validarCPF }) {
     </Stepper>
     {formularios[etapaAtual]}
 
-    </>
+    </Container>
   );
 }
 

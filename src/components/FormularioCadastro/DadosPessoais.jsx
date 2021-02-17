@@ -86,7 +86,7 @@ function DadosPessoais({aoEnviar, validarCPF}) {
       />
 
       <Button type="submit" variant="contained" color="primary">
-        Cadastrar
+        Próximo
       </Button>
     </form>
   );
