@@ -21,7 +21,7 @@ function FormularioCadastro({ aoEnviar, validarCPF }) {
 <DadosUsuario aoEnviar={coletarDados}  />,
 <DadosPessoais aoEnviar={coletarDados} validarCPF={validarCPF} />,
 <DadosEntrega aoEnviar={coletarDados} />,
-<Typography variant="h5">Obrigado pelos dados Cadastrados {dadosColetado.nome}</Typography>
+<Typography variant="h5">Obrigado {dadosColetado.nome} pelos dados Cadastrados! </Typography>
   ];
 
   function coletarDados(dados){
@@ -36,9 +36,9 @@ function FormularioCadastro({ aoEnviar, validarCPF }) {
     <>
     <Stepper activeStep={etapaAtual}>
       <Step><StepLabel>Login</StepLabel></Step>
-     <Step> <StepLabel>Pessoal</StepLabel></Step>
+      <Step><StepLabel>Pessoal</StepLabel></Step>
       <Step><StepLabel>Entrega</StepLabel></Step>
-      <Step><StepLabel>Finalização</StepLabel></Step>
+      <Step><StepLabel>Fim</StepLabel></Step>
     </Stepper>
     {formularios[etapaAtual]}
 
