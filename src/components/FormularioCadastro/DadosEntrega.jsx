@@ -8,7 +8,7 @@ function DadosEntrega({ aoEnviar }) {
   const [estado, setEstado] = useState("");
   const [cidade, setCidade] = useState("");
 
-  useEffect(() => {
+  function buscarCep() {
     if (cep.length === 8) {
       const url = `https://viacep.com.br/ws/${cep}/json/`;
       fetch(url)
@@ -19,7 +19,7 @@ function DadosEntrega({ aoEnviar }) {
           atribuirCampos(data);
         });
     }
-  });
+  };
 
   function atribuirCampos(data) {
     setEndereco(data.logradouro);
@@ -41,7 +41,7 @@ function DadosEntrega({ aoEnviar }) {
           setCep(event.target.value);
         }}
         label="CEP"
-        required
+        onBlur={buscarCep}
         variant="outlined"
         margin="normal"
         id="cep"

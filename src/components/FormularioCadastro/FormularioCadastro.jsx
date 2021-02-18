@@ -6,7 +6,7 @@ import {StepLabel, Stepper, Typography, Step, Container} from "@material-ui/core
 
 
 function FormularioCadastro({ aoEnviar, validacoes }) {
-  const [etapaAtual, setEtapaAtual] = useState(0);
+  const [etapaAtual, setEtapaAtual] = useState(1);
   const [dadosColetado, setDados] = useState({});
   
   useEffect(()=>{
