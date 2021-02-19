@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import DadosPessoais from "./DadosPessoais";
 import DadosUsuario from "./DadosUsuario";
 import DadosEntrega from "./DadosEntrega";
-import {StepLabel, Stepper, Typography, Step, Container} from "@material-ui/core";
+import {StepLabel, Stepper, Typography, Step} from "@material-ui/core";
+import {Container} from '../../StyledComponentes/Container';
+import Titulo from "../../StyledComponentes/Titulo"
+
+
 
 
 function FormularioCadastro({ aoEnviar, validacoes }) {
@@ -33,7 +37,10 @@ function FormularioCadastro({ aoEnviar, validacoes }) {
     setEtapaAtual(etapaAtual+1);
   }
   return (
-    <Container maxWidth="sm" >
+    <>
+    
+    <Container >
+    <Titulo> Formulário de cadastro</Titulo>
     <Stepper activeStep={etapaAtual}>
       <Step><StepLabel>Login</StepLabel></Step>
       <Step><StepLabel>Pessoal</StepLabel></Step>
@@ -43,6 +50,7 @@ function FormularioCadastro({ aoEnviar, validacoes }) {
     {formularios[etapaAtual]}
 
     </Container>
+    </>
   );
 }
 
