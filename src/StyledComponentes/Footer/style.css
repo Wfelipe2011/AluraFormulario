@@ -3,10 +3,10 @@
     padding-bottom: 15px;
     margin-block-end: initial;
     background-color:  #380E5B;
-    position:absolute;
+    
     bottom:0;
     width: 100%;
-    height: 10%;
+    
     font-weight: normal;
     font-size: 12px;
     line-height: 16px;
@@ -15,7 +15,7 @@
   }
   
   .footer-icons {
-    margin-top: 3%;
+    margin-top: 5px;
     display: flex;
     justify-content: center;
     color: #380E5B;
