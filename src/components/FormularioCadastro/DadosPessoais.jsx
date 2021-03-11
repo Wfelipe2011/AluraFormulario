@@ -4,7 +4,7 @@ import ValidacoesCadastro from "../../contexts/ValidacoesCadastro"
 import useErros from "../../hooks/useErros";
 
 function DadosPessoais({ aoEnviar }) {
-  const [nome, setNome] = useState("");
+  const [name, setNome] = useState("");
   const [sobrenome, setSobrenome] = useState("");
   const [cpf, setCpf] = useState("");
   const [promocoes, setPromocoes] = useState(true);
@@ -13,21 +13,38 @@ function DadosPessoais({ aoEnviar }) {
   const [erros, validarCampos, possoEnviar] = useErros(validacoes);
 
 
+  /*function buscarCpf() {
+
+      const url = `http://localhost:3000/formulario`
+      const data = fetch(url, {
+        method: 'GET',
+        body: JSON.stringify(cpf)
+        }) 
+        atribuirCampos(data)
+      }
+
+  function atribuirCampos(data) {
+    setNome(data.name);
+    setSobrenome(data.sobrenome);
+    
+  }*/
+
+
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
         if (possoEnviar()) {
-          aoEnviar({ nome, sobrenome, cpf, novidades, promocoes });
+          aoEnviar({ name, sobrenome, cpf, novidades, promocoes });
         }
       }}
     >
       <TextField
-        value={nome}
+        value={name}
         onChange={(event) => {
           setNome(event.target.value);
         }}
-        id="nome"
+        id="name"
         required
         label="Nome"
         variant="outlined"
@@ -50,7 +67,7 @@ function DadosPessoais({ aoEnviar }) {
         onChange={(event) => {
           setCpf(event.target.value);
         }}
-        onBlur={validarCampos}
+        
         error={!erros.cpf.valido}
         helperText={erros.cpf.texto}
         required

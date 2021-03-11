@@ -5,7 +5,7 @@ import {ReactComponent as Youtube} from './youtube.svg'
 import {ReactComponent as Instagram} from './instagram.svg'
 import {ReactComponent as Linkedin} from './linkedin.svg'
 
-const Rodape = styled.div`
+const Rodape = styled.footer`
 `
 
 

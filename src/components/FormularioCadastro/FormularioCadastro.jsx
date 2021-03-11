@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DadosPessoais from "./DadosPessoais";
 import DadosUsuario from "./DadosUsuario";
 import DadosEntrega from "./DadosEntrega";
-import {StepLabel, Stepper, Typography, Step} from "@material-ui/core";
+import {Typography} from "@material-ui/core";
 import {Container} from '../../StyledComponentes/Container';
 import Titulo from "../../StyledComponentes/Titulo"
 
@@ -17,6 +17,16 @@ function FormularioCadastro({ aoEnviar, validacoes }) {
     if(etapaAtual === formularios.length-1){
       aoEnviar(dadosColetado)
       console.log(dadosColetado.nome)
+
+      fetch('http://api-formulario.herokuapp.com/formulario', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dadosColetado)
+      });
+
     }
     
   })
@@ -41,12 +51,7 @@ function FormularioCadastro({ aoEnviar, validacoes }) {
     
     <Container >
     <Titulo> Formulário de cadastro</Titulo>
-    <Stepper activeStep={etapaAtual}>
-      <Step><StepLabel>Login</StepLabel></Step>
-      <Step><StepLabel>Pessoal</StepLabel></Step>
-      <Step><StepLabel>Entrega</StepLabel></Step>
-      <Step><StepLabel>Fim</StepLabel></Step>
-    </Stepper>
+    
     {formularios[etapaAtual]}
 
     </Container>
